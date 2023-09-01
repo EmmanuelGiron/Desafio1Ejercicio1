@@ -7,21 +7,22 @@ import { useForm } from 'react-hook-form'
     const [porcentaje, setPorcentaje]=useState(0);
     const [descuento, setDescuento]=useState(0);
     const [total, setTotal]=useState(0);
+    
 
     const calcular_descuento = curso => {
-        if(cantidad!==0 ){
-         if(cantidad>=2 && cantidad<=3) 
+        if(curso.cantidad!==0 ){
+         if(curso.cantidad>=2 && curso.cantidad<=3) 
          {
             descuento=25*0.10;
             setTotal(curso.cantidad*25-descuento)
-         }else if(cantidad>=4 && cantidad<=5){
+         }else if(curso.cantidad>=4 && curso.cantidad<=5){
             descuento=25*0.20;
             setTotal(curso.cantidad*25-descuento)
-         }else if(cantidad>=6 && cantidad<=7){
+         }else if(curso.cantidad>=6 && curso.cantidad<=7){
             descuento=25*0.27;
             setTotal(curso.cantidad*25-descuento)
          }
-         else if(cantidad>=9 && cantidad<10){
+         else if(curso.cantidad>=9 && curso.cantidad<10){
             descuento=25*0.37;
             setTotal(curso.cantidad*25-descuento)
          }else{
@@ -36,13 +37,13 @@ import { useForm } from 'react-hook-form'
         tipo_curso: '',
         cantidad: ''
     })
-    const onSubmit = (data) => {
+    const enviar = (data) => {
         console.log(data)
     }
     return (
         <Fragment>
         <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(enviar)}>
         <div>
         <label for="name">Nombre: </label>
         <input type="text" id="nombre" name="nombre_cliente" className="form-control mb-2" />
